@@ -134,12 +134,14 @@ export default function App() {
           <span className="dot"></span>
           <h1>Acme Careers — Dashboard</h1>
           <span className="demo-badge">
-            {demoType.replace("-", " ").replace(/\b\w/g, l => l.toUpperCase())}
+            {demoType
+              .replace("-", " ")
+              .replace(/\b\w/g, (l) => l.toUpperCase())}
           </span>
         </div>
         <div className="toolbar">
-          <select 
-            value={demoType} 
+          <select
+            value={demoType}
             onChange={(e) => setDemoType(e.target.value)}
             className="demo-selector"
           >
@@ -165,7 +167,7 @@ export default function App() {
           options: {
             primaryColor: "var(--brand)",
             textColor: "#0f172a",
-            zIndex: 10000,
+            zIndex: 9999,
           },
           tooltipContent: { fontSize: "14px" },
         }}
@@ -245,6 +247,7 @@ export default function App() {
         onReplayTour={handleReplayTour}
         isTourComplete={isTourComplete}
         currentStep={stepIndex}
+        run={run}
       />
     </div>
   );
