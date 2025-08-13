@@ -1,0 +1,37 @@
+
+:root{
+  --brand: #6C5CE7;
+  --brand-2: #A29BFE;
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+*{box-sizing:border-box}
+body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: linear-gradient(180deg, #0b1022 0%, #0f172a 100%); color:var(--text);}
+
+.header{ display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:16px 24px; border-bottom:1px solid #1f2937; position:sticky; top:0; background:rgba(15,23,42,.9); backdrop-filter: blur(6px);}
+.brand{ display:flex; gap:10px; align-items:center;}
+.brand .dot{ width:12px; height:12px; border-radius:50%; background: var(--brand); box-shadow: 0 0 24px var(--brand-2)}
+.brand h1{ font-size:16px; margin:0; letter-spacing:.4px}
+.toolbar{ display:flex; gap:10px; align-items:center;}
+button{ background: var(--brand); border:none; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600;}
+button.secondary{ background: transparent; border:1px solid #334155; color:var(--text)}
+
+.container{ padding: 24px; max-width: 1160px; margin: 0 auto;}
+.grid{ display:grid; gap:16px; grid-template-columns: repeat(4, minmax(0,1fr));}
+@media (max-width: 960px){ .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px){ .grid{ grid-template-columns: 1fr; } }
+
+.card{ background: linear-gradient(180deg, #0b1226, #0b132b); border: 1px solid #1f2937; border-radius: 14px;
+  padding: 16px; min-height: 140px; position: relative; overflow: hidden;}
+.card h3{ margin: 0 0 8px 0; font-size: 16px }
+.card p{ margin:0; color: var(--muted); font-size: 14px; line-height: 1.4 }
+.badge{ position:absolute; top:12px; right:12px; font-size:12px; padding:4px 8px; border-radius:999px; background:#0b1632; border:1px solid #1f2937; color:var(--brand-2) }
+
+/* Joyride tweaks */
+.__floater.__floater__open .__floater__content{ border-radius:12px; }
+.react-joyride__tooltip{ color:#0f172a; }
+.react-joyride__tooltip button{ border-radius:8px; }
+.react-joyride__spotlight{ border-radius:12px; }
