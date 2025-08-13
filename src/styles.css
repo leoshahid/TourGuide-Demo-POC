@@ -19,6 +19,26 @@ body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, 
 button{ background: var(--brand); border:none; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600;}
 button.secondary{ background: transparent; border:1px solid #334155; color:var(--text)}
 
+.demo-selector {
+  background: transparent;
+  border: 1px solid #334155;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.demo-selector:hover {
+  border-color: var(--brand);
+}
+
+.demo-selector option {
+  background: var(--bg);
+  color: var(--text);
+}
+
 .container{ padding: 24px; max-width: 1160px; margin: 0 auto;}
 .grid{ display:grid; gap:16px; grid-template-columns: repeat(4, minmax(0,1fr));}
 @media (max-width: 960px){ .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
@@ -35,3 +55,296 @@ button.secondary{ background: transparent; border:1px solid #334155; color:var(-
 .react-joyride__tooltip{ color:#0f172a; }
 .react-joyride__tooltip button{ border-radius:8px; }
 .react-joyride__spotlight{ border-radius:12px; }
+
+/* Onboarding Checklist Styles */
+.onboarding-checklist {
+  position: fixed;
+  right: 24px;
+  top: 100px;
+  width: 320px;
+  max-height: calc(100vh - 140px);
+  background: linear-gradient(180deg, #0b1226, #0b132b);
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.onboarding-checklist.collapsed {
+  width: 80px;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.checklist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checklist-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.collapse-button {
+  background: transparent;
+  border: 1px solid #334155;
+  color: var(--muted);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapse-button:hover {
+  background: #334155;
+  color: var(--text);
+}
+
+.expand-button {
+  background: transparent;
+  border: 1px solid #334155;
+  color: var(--muted);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.expand-button:hover {
+  background: #334155;
+  color: var(--text);
+}
+
+.progress-bar {
+  position: relative;
+  height: 8px;
+  background: #1f2937;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.progress-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1f2937;
+}
+
+.progress-circle .progress-text {
+  position: static;
+  transform: none;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.checklist-steps {
+  margin-bottom: 20px;
+}
+
+.checklist-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.checklist-step:hover {
+  background: rgba(108, 92, 231, 0.1);
+  border-color: rgba(108, 92, 231, 0.3);
+}
+
+.checklist-step.completed {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.checklist-step.current {
+  background: rgba(108, 92, 231, 0.15);
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+}
+
+.step-icon {
+  font-size: 20px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.step-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.step-title {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.step-description {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.replay-step-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  color: var(--muted);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.replay-step-btn:hover {
+  background: #334155;
+  color: var(--text);
+}
+
+.checklist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.replay-all-btn,
+.reset-btn {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.replay-all-btn {
+  background: var(--brand);
+  color: white;
+}
+
+.replay-all-btn:hover:not(:disabled) {
+  background: var(--brand-2);
+  transform: translateY(-1px);
+}
+
+.reset-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  color: var(--muted);
+}
+
+.reset-btn:hover:not(:disabled) {
+  background: #334155;
+  color: var(--text);
+}
+
+.replay-all-btn:disabled,
+.reset-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .onboarding-checklist {
+    right: 16px;
+    width: 280px;
+  }
+  
+  .onboarding-checklist.collapsed {
+    width: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .onboarding-checklist {
+    position: static;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    max-height: none;
+  }
+  
+  .onboarding-checklist.collapsed {
+    width: 100%;
+    padding: 16px;
+  }
+  
+  .onboarding-checklist.collapsed .expand-button {
+    margin: 0 auto 16px auto;
+  }
+}
+
+.demo-badge {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
+}
